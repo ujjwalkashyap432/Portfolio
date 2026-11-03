@@ -45,37 +45,62 @@
   </script>
 
   <style>
+    /* Prevent horizontal overflow on mobile */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
     body {
       background-color: #C94B28;
       color: #231F20;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    /* Ensure long words and headings wrap cleanly on small screens */
+    h1, h2, h3, p {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
     .vertical-tag {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
     }
+
     .editorial-card {
       background-color: #FAF6EE;
       border: 2px solid #231F20;
-      border-radius: 28px;
-      box-shadow: 8px 8px 0px #231F20;
+      border-radius: 20px;
+      box-shadow: 6px 6px 0px #231F20;
     }
+
+    @media (min-width: 640px) {
+      .editorial-card {
+        border-radius: 28px;
+        box-shadow: 8px 8px 0px #231F20;
+      }
+    }
+
     .editorial-border {
       border: 2px solid #231F20;
     }
+
     .editorial-pill {
       border: 1.5px solid #231F20;
       box-shadow: 2px 2px 0px #231F20;
     }
   </style>
 </head>
-<body class="selection:bg-rust selection:text-white antialiased min-h-screen pt-28 pb-12 px-4 sm:px-6 md:px-10">
+<body class="selection:bg-rust selection:text-white antialiased min-h-screen pt-24 pb-12 px-3 sm:px-6 md:px-10">
 
   <!-- HEADER / TOP NAVIGATION -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-[#FAF6EE]/95 backdrop-blur-md border-b-2 border-[#231F20]">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="font-headline font-black text-lg tracking-wider text-ink flex items-center gap-2.5">
-        <span class="w-3 h-3 rounded-full bg-rust ring-4 ring-rust/20"></span>
-        <span>UJJWAL KASHYAP</span>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-headline font-black text-base sm:text-lg tracking-wider text-ink flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-rust ring-4 ring-rust/20 shrink-0"></span>
+        <span class="truncate">UJJWAL KASHYAP</span>
       </a>
 
       <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-ink/70">
@@ -87,18 +112,18 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <a href="mailto:ujjwalkashyap432@gmail.com" class="inline-flex items-center gap-2 px-5 py-2.5 bg-rust hover:bg-rustDark text-white text-xs font-bold uppercase tracking-wider rounded-xl transition editorial-border shadow-deck-sm">
-          <i class="fa-regular fa-envelope text-xs"></i> Get in Touch
+        <a href="mailto:ujjwalkashyap432@gmail.com" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-rust hover:bg-rustDark text-white text-xs font-bold uppercase tracking-wider rounded-xl transition editorial-border shadow-deck-sm">
+          <i class="fa-regular fa-envelope text-xs"></i> <span class="hidden sm:inline">Get in Touch</span><span class="inline sm:hidden">Contact</span>
         </a>
       </div>
     </div>
   </header>
 
   <!-- MAIN DECK GRID CONTAINER -->
-  <main class="max-w-5xl mx-auto space-y-12">
+  <main class="max-w-5xl mx-auto space-y-10 sm:space-y-12">
 
     <!-- ==================== CARD 01: HERO COVER ==================== -->
-    <section class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <!-- Left Vertical Ribbon -->
       <div class="absolute left-4 top-10 bottom-10 hidden sm:flex items-center justify-center">
         <span class="vertical-tag font-display text-[10px] tracking-[0.25em] font-extrabold uppercase text-ink/40">
@@ -106,20 +131,20 @@
         </span>
       </div>
 
-      <div class="sm:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-6">
+      <div class="sm:pl-8 lg:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
             <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
             <span class="font-display font-bold text-xs uppercase tracking-widest text-ink/65">PORTFOLIO 2026</span>
           </div>
 
-          <h1 class="font-headline font-black text-5xl sm:text-6xl lg:text-[70px] leading-[1] tracking-tight text-rust uppercase">
+          <h1 class="font-headline font-black text-4xl sm:text-6xl lg:text-[70px] leading-[1.05] tracking-tight text-rust uppercase break-words">
             UJJWAL <br>
             <span class="text-ink">KASHYAP</span>
           </h1>
 
-          <div class="space-y-3">
-            <p class="font-display font-bold text-xl sm:text-2xl text-ink">
+          <div class="space-y-2 sm:space-y-3">
+            <p class="font-display font-bold text-lg sm:text-2xl text-ink">
               Visual Storyteller & Growth Marketer
             </p>
             <p class="text-ink/80 text-sm sm:text-base leading-relaxed max-w-lg">
@@ -144,13 +169,13 @@
           </div>
 
           <!-- Metrics Row -->
-          <div class="grid grid-cols-2 gap-4 pt-6 border-t-2 border-ink/10 max-w-md">
+          <div class="grid grid-cols-2 gap-4 pt-5 sm:pt-6 border-t-2 border-ink/10 max-w-md">
             <div>
-              <div class="font-headline font-black text-3xl text-rust">+250k</div>
+              <div class="font-headline font-black text-2xl sm:text-3xl text-rust">+250k</div>
               <p class="text-xs font-bold uppercase tracking-wider text-ink/70">Organic Reach[cite: 2]</p>
             </div>
             <div>
-              <div class="font-headline font-black text-3xl text-rust">+800k</div>
+              <div class="font-headline font-black text-2xl sm:text-3xl text-rust">+800k</div>
               <p class="text-xs font-bold uppercase tracking-wider text-ink/70">Hours Watched</p>
             </div>
           </div>
@@ -158,7 +183,7 @@
 
         <!-- Hero Portrait Image Frame -->
         <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-sm aspect-[4/5] bg-rust rounded-3xl editorial-border overflow-hidden shadow-deck">
+          <div class="relative w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-rust rounded-3xl editorial-border overflow-hidden shadow-deck">
             <img 
               src="images/00-profile-portrait.jpg" 
               alt="Ujjwal Kashyap" 
@@ -169,28 +194,28 @@
         </div>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         01
       </div>
     </section>
 
 
     <!-- ==================== CARD 02: ABOUT ME ==================== -->
-    <section class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="absolute left-4 top-10 bottom-10 hidden sm:flex items-center justify-center">
         <span class="vertical-tag font-display text-[10px] tracking-[0.25em] font-extrabold uppercase text-ink/40">
           BIOGRAPHY • EDUCATION • CREDENTIALS
         </span>
       </div>
 
-      <div class="sm:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-6">
+      <div class="sm:pl-8 lg:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
             <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
             <span class="font-mono text-xs text-ink/65 uppercase">PROFILE BRIEF</span>
           </div>
 
-          <h2 class="font-headline font-black text-4xl sm:text-5xl text-rust uppercase">
+          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
             ABOUT ME
           </h2>
 
@@ -202,18 +227,18 @@
             I specialize in commercial video shoots, Meta performance ad testing, and building organic distribution loops that consistently outperform traditional corporate commercials.
           </p>
 
-          <div class="bg-creamDark p-6 rounded-2xl editorial-border space-y-3">
+          <div class="bg-creamDark p-4 sm:p-6 rounded-2xl editorial-border space-y-3">
             <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full"></span> Commercial Filmmaking & Video Production[cite: 3]
+              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Commercial Filmmaking & Video Production[cite: 3]
             </div>
             <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full"></span> Performance Marketing & Meta Ad Funnels[cite: 3]
+              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Performance Marketing & Meta Ad Funnels[cite: 3]
             </div>
             <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full"></span> Hyperlocal Digital Product Architectures
+              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Hyperlocal Digital Product Architectures
             </div>
             <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full"></span> Certified Performance Marketer (TD-UJJW-PM-1240)[cite: 1]
+              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Certified Performance Marketer (TD-UJJW-PM-1240)[cite: 1]
             </div>
           </div>
 
@@ -225,7 +250,7 @@
         </div>
 
         <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-sm aspect-[4/5] bg-creamDark rounded-3xl editorial-border overflow-hidden shadow-deck">
+          <div class="w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-creamDark rounded-3xl editorial-border overflow-hidden shadow-deck">
             <img 
               src="images/01-about-portrait.jpg" 
               alt="Ujjwal Kashyap Profile" 
@@ -236,28 +261,28 @@
         </div>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         02
       </div>
     </section>
 
 
     <!-- ==================== CARD 03: DESIGN PHILOSOPHY ==================== -->
-    <section id="philosophy" class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section id="philosophy" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="absolute left-4 top-10 bottom-10 hidden sm:flex items-center justify-center">
         <span class="vertical-tag font-display text-[10px] tracking-[0.25em] font-extrabold uppercase text-ink/40">
           THESIS • PRINCIPLES • STRATEGY
         </span>
       </div>
 
-      <div class="sm:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-6 space-y-6">
+      <div class="sm:pl-8 lg:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6 space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
             <span class="font-headline font-black text-2xl text-rust">03</span>
             <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
           </div>
 
-          <h2 class="font-headline font-black text-4xl sm:text-5xl text-rust uppercase leading-tight">
+          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase leading-tight">
             MY DESIGN <br><span class="text-ink">PHILOSOPHY</span>
           </h2>
 
@@ -289,14 +314,14 @@
         </div>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         03
       </div>
     </section>
 
 
     <!-- ==================== CARD 04: WORKFLOW & PROCESS ==================== -->
-    <section class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="flex items-center justify-between mb-6">
         <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
         <span class="font-display font-bold text-xs uppercase tracking-widest text-ink/65">PORTFOLIO 2026</span>
@@ -343,18 +368,18 @@
         </div>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         04
       </div>
     </section>
 
 
     <!-- ==================== CARD 05: SKILLS & EXPERTISE ==================== -->
-    <section class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="flex items-center justify-between mb-8">
         <div>
           <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-4xl sm:text-5xl text-rust uppercase">
+          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
             SKILLS & <span class="text-ink">EXPERTISE</span>
           </h2>
         </div>
@@ -403,18 +428,18 @@
         </div>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         05
       </div>
     </section>
 
 
     <!-- ==================== CARD 06: PROJECT BRANDING SHOWCASE ==================== -->
-    <section id="work" class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section id="work" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="flex items-center justify-between mb-8">
         <div>
           <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-4xl sm:text-5xl text-rust uppercase">
+          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
             PROJECT BRANDING <span class="text-ink">SHOWCASE</span>
           </h2>
           <p class="text-ink/80 text-sm mt-1">Click any client project to inspect on-ground deliverables.</p>
@@ -471,7 +496,7 @@
 
       </div>
 
-      <div class="pt-6 border-t-2 border-ink/10 flex items-center gap-3">
+      <div class="pt-6 border-t-2 border-ink/10 flex items-center gap-3 flex-wrap">
         <span class="text-xs font-mono font-bold uppercase tracking-wider text-ink/65">Brand Swatches:</span>
         <span class="w-6 h-6 rounded-full bg-[#C43D1A] editorial-border" title="#C43D1A"></span>
         <span class="w-6 h-6 rounded-full bg-[#E57A44] editorial-border" title="#E57A44"></span>
@@ -480,25 +505,25 @@
         <span class="w-6 h-6 rounded-full bg-[#231F20] editorial-border" title="#231F20"></span>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         06
       </div>
     </section>
 
 
     <!-- ==================== CARD 07: UX DESIGN PROJECT ==================== -->
-    <section id="platforms" class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section id="platforms" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="flex items-center justify-between mb-8">
         <div>
           <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-4xl sm:text-5xl text-rust uppercase">
+          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
             UX DESIGN <span class="text-ink">PROJECT</span>
           </h2>
         </div>
         <span class="font-headline font-black text-3xl text-ink/30">07</span>
       </div>
 
-      <div class="bg-sage p-6 sm:p-10 rounded-3xl editorial-border grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-white">
+      <div class="bg-sage p-5 sm:p-10 rounded-3xl editorial-border grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-white">
         
         <div class="lg:col-span-6 space-y-4">
           <span class="px-3 py-1 rounded-full bg-white text-sage font-mono text-xs font-bold uppercase tracking-wider">
@@ -530,7 +555,7 @@
 
       </div>
 
-      <div class="mt-6 p-6 rounded-2xl bg-white editorial-border flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="mt-6 p-5 sm:p-6 rounded-2xl bg-white editorial-border flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <span class="text-xs font-mono font-bold text-rust uppercase">E-Commerce Architecture</span>
           <h4 class="font-headline font-bold text-xl text-ink">Comve.in — Single-Product Funnel</h4>
@@ -541,18 +566,18 @@
         </a>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         07
       </div>
     </section>
 
 
     <!-- ==================== CARD 08: SOCIAL MEDIA CAMPAIGN ==================== -->
-    <section id="spotlight" class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section id="spotlight" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="flex items-center justify-between mb-8">
         <div>
           <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-4xl sm:text-5xl text-rust uppercase">
+          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
             SOCIAL MEDIA <span class="text-ink">CAMPAIGN</span>
           </h2>
         </div>
@@ -603,18 +628,18 @@
         </div>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         08
       </div>
     </section>
 
 
     <!-- ==================== CARD 09: ACHIEVEMENT & EXPERIENCE ==================== -->
-    <section class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="flex items-center justify-between mb-8">
         <div>
           <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-4xl sm:text-5xl text-rust uppercase">
+          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
             ACHIEVEMENT <br><span class="text-ink">& EXPERIENCE</span>
           </h2>
         </div>
@@ -653,20 +678,20 @@
         </div>
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         09
       </div>
     </section>
 
 
     <!-- ==================== CARD 10: CONTACT NOW ==================== -->
-    <section class="editorial-card p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        <div class="lg:col-span-7 space-y-6">
+        <div class="lg:col-span-7 space-y-5 sm:space-y-6">
           <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink/65">Let's Work Together!</span>
           
-          <h2 class="font-headline font-black text-5xl sm:text-7xl text-rust uppercase leading-none">
+          <h2 class="font-headline font-black text-4xl sm:text-7xl text-rust uppercase leading-none">
             CONTACT <br><span class="text-ink">NOW</span>
           </h2>
 
@@ -676,24 +701,24 @@
 
           <div class="space-y-3 pt-2">
             <a href="mailto:ujjwalkashyap432@gmail.com" class="flex items-center gap-3 text-sm font-bold text-ink hover:text-rust transition">
-              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border"><i class="fa-regular fa-envelope text-xs"></i></span>
-              <span>ujjwalkashyap432@gmail.com</span>
+              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border shrink-0"><i class="fa-regular fa-envelope text-xs"></i></span>
+              <span class="truncate">ujjwalkashyap432@gmail.com</span>
             </a>
 
             <a href="https://wa.me/917004996170" target="_blank" class="flex items-center gap-3 text-sm font-bold text-ink hover:text-rust transition">
-              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border"><i class="fa-brands fa-whatsapp text-xs"></i></span>
+              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border shrink-0"><i class="fa-brands fa-whatsapp text-xs"></i></span>
               <span>+91 7004996170 (WhatsApp)[cite: 2]</span>
             </a>
 
             <a href="https://snapnear.in/" target="_blank" class="flex items-center gap-3 text-sm font-bold text-ink hover:text-rust transition">
-              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border"><i class="fa-solid fa-globe text-xs"></i></span>
+              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border shrink-0"><i class="fa-solid fa-globe text-xs"></i></span>
               <span>www.snapnear.in • comve.in</span>
             </a>
           </div>
         </div>
 
         <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-sm aspect-[4/5] rounded-3xl editorial-border overflow-hidden bg-creamDark shadow-deck">
+          <div class="w-full max-w-xs sm:max-w-sm aspect-[4/5] rounded-3xl editorial-border overflow-hidden bg-creamDark shadow-deck">
             <img 
               src="images/00-profile-portrait.jpg" 
               alt="Ujjwal Kashyap" 
@@ -705,7 +730,7 @@
 
       </div>
 
-      <div class="absolute bottom-4 right-8 font-headline font-black text-2xl text-ink/40">
+      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
         10
       </div>
     </section>
@@ -720,20 +745,20 @@
 
   <!-- ==================== MODAL LIGHTBOX ==================== -->
   <div id="workModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-ink/80 backdrop-blur-sm" onclick="closeWorkModal(event)">
-    <div class="bg-cream rounded-3xl max-w-3xl w-full p-6 sm:p-8 editorial-border shadow-deck-lg relative max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+    <div class="bg-cream rounded-3xl max-w-3xl w-full p-5 sm:p-8 editorial-border shadow-deck-lg relative max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
       
       <div class="flex items-start justify-between pb-4 border-b-2 border-ink/20 shrink-0">
         <div>
-          <h3 id="modalTitle" class="text-2xl font-headline font-black text-rust uppercase">Company</h3>
+          <h3 id="modalTitle" class="text-xl sm:text-2xl font-headline font-black text-rust uppercase">Company</h3>
           <p id="modalIndustry" class="text-xs font-mono text-ink/70 font-bold"></p>
         </div>
-        <button onclick="hideModal()" class="w-9 h-9 rounded-full bg-white editorial-border hover:bg-rust hover:text-white transition flex items-center justify-center">
+        <button onclick="hideModal()" class="w-9 h-9 rounded-full bg-white editorial-border hover:bg-rust hover:text-white transition flex items-center justify-center shrink-0">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
       <div class="overflow-y-auto space-y-6 pt-4 pr-1">
-        <div class="bg-white p-5 rounded-2xl editorial-border">
+        <div class="bg-white p-4 sm:p-5 rounded-2xl editorial-border">
           <div class="text-[11px] font-mono uppercase tracking-wider text-ink/50 font-bold mb-1">Company Overview</div>
           <p id="modalCompanyAbout" class="text-xs sm:text-sm text-ink leading-relaxed"></p>
           
