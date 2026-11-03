@@ -106,7 +106,7 @@
 
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a href="#videovault" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-lg">
-            <i class="fa-solid fa-play mr-2"></i> Watch 20+ Videos
+            <i class="fa-solid fa-play mr-2"></i> Watch Videos
           </a>
           <a href="Ujjwal-Kumar-CV.pdf" download class="px-6 py-3.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition">
             <i class="fa-solid fa-download mr-2"></i> Download CV
@@ -223,7 +223,6 @@
       <div onclick="openWorkModal('euler')" class="project-card p-8 rounded-3xl cursor-pointer flex flex-col justify-between group">
         <div>
           <div class="flex items-center justify-between mb-6">
-            <!-- Company Logo Badge -->
             <div class="h-10 px-3 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center gap-2">
               <img src="images/logo-euler.png" alt="Euler Motors" class="h-6 w-6 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/40x400?text=Euler';">
               <span class="text-xs font-bold text-white">Euler Motors</span>
@@ -245,7 +244,6 @@
       <div onclick="openWorkModal('ig')" class="project-card p-8 rounded-3xl cursor-pointer flex flex-col justify-between group">
         <div>
           <div class="flex items-center justify-between mb-6">
-            <!-- Company Logo Badge -->
             <div class="h-10 px-3 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center gap-2">
               <img src="images/logo-ig.png" alt="IG International" class="h-6 w-6 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/40x400?text=IG';">
               <span class="text-xs font-bold text-white">IG International</span>
@@ -267,7 +265,6 @@
       <div onclick="openWorkModal('amazg')" class="project-card p-8 rounded-3xl cursor-pointer flex flex-col justify-between group">
         <div>
           <div class="flex items-center justify-between mb-6">
-            <!-- Company Logo Badge -->
             <div class="h-10 px-3 bg-zinc-900 border border-zinc-800 rounded-xl flex items-center gap-2">
               <img src="images/logo-amazg.png" alt="Amazg" class="h-6 w-6 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/40x400?text=Amazg';">
               <span class="text-xs font-bold text-white">Amazg Agency</span>
@@ -288,35 +285,32 @@
     </div>
   </section>
 
-  <!-- VIDEO PRODUCTION VAULT (20+ VIDEOS & 100+ MORE TEXT) -->
+  <!-- VIDEO PRODUCTION VAULT -->
   <section id="videovault" class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-800/80">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
       <div>
-        <span class="text-xs font-mono uppercase tracking-widest text-amber-500 font-bold">GitHub Portfolio Folder</span>
-        <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-1">Video Production Vault (20+ Videos)</h2>
+        <span class="text-xs font-mono uppercase tracking-widest text-amber-500 font-bold">Portfolio Folder</span>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-1">Video Production Vault</h2>
       </div>
       <p class="text-zinc-400 text-sm max-w-sm mt-4 md:mt-0">
-        Directly streamed from your GitHub repository folder (`videos/video-01.mp4` to `video-20.mp4`).
+        Directly streamed from your `videos/` folder (`video-01.mp4` to `video-20.mp4`).
       </p>
     </div>
 
-    <!-- Video Grid (20 items generated dynamically) -->
+    <!-- Video Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" id="videoVaultGrid">
-      <!-- Injected via JavaScript below -->
+      <!-- Injected via JavaScript -->
     </div>
 
-    <!-- 100+ More Text & Archive Banner -->
+    <!-- 100+ More Archive Banner -->
     <div class="mt-12 project-card p-8 rounded-3xl text-center bg-gradient-to-r from-zinc-900 via-zinc-900/80 to-zinc-900 border border-zinc-800">
       <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 mb-4 border border-amber-500/20">
         <i class="fa-solid fa-layer-group text-lg"></i>
       </div>
       <h3 class="font-display font-bold text-2xl text-white mb-2">+100 More Commercial Assets & Reels</h3>
-      <p class="text-zinc-400 text-sm max-w-2xl mx-auto mb-6">
-        Beyond the featured video vault, the complete GitHub archive contains over 100+ additional commercial cuts, raw B-roll sequences, static performance design variations, and client content calendars.
+      <p class="text-zinc-400 text-sm max-w-2xl mx-auto">
+        Beyond the featured video vault, the complete archive contains over 100+ additional commercial cuts, raw B-roll sequences, static performance design variations, and client content calendars.
       </p>
-      <a href="https://github.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition border border-zinc-700">
-        <i class="fa-brands fa-github"></i> View Full GitHub Repository Folder
-      </a>
     </div>
   </section>
 
@@ -451,7 +445,7 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Automatically generate 20 video cards pointing to GitHub folder /videos/video-01.mp4 ... video-20.mp4
+    // Automatically generate 20 video cards pointing to folder /videos/video-01.mp4 ... video-20.mp4
     const videoVaultGrid = document.getElementById('videoVaultGrid');
     for (let i = 1; i <= 20; i++) {
       const numStr = i < 10 ? '0' + i : i;
@@ -469,7 +463,7 @@
         </div>
         <div class="flex items-center justify-between text-xs font-mono text-zinc-400">
           <span>Asset #${numStr}</span>
-          <span class="text-amber-400">GitHub Vault</span>
+          <span class="text-amber-400">Vault Item</span>
         </div>
       `;
       videoVaultGrid.appendChild(card);
@@ -497,7 +491,7 @@
           { src: "images/09-ig-work-1.jpg", caption: "Sequence 09: Farm-level fruit sourcing documentation" },
           { src: "images/10-ig-work-2.jpg", caption: "Sequence 10: Cold-chain warehouse & packaging facility" },
           { src: "images/11-ig-work-3.jpg", caption: "Sequence 11: High-detail cinematic fruit macro shot" },
-          { src: "images/12-ig-work-4.jpg", caption: "Sequence 12: Content calendar & scheduling" },
+          { src: "images/12-ig-work-4.jpg", caption: "Sequence 12: Content calendar & Hootsuite scheduling" },
           { src: "images/13-ig-work-5.jpg", caption: "Sequence 13: Paid Meta conversion ad creative" },
           { src: "images/14-ig-work-6.jpg", caption: "Sequence 14: Retail counter customer experience reel" }
         ]
