@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,33 +11,28 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Google Fonts: Space Grotesk, Syne, Inter -->
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            display: ['"Space Grotesk"', 'sans-serif'],
-            headline: ['"Syne"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
           },
           colors: {
-            canvas: '#C94B28',        /* Terracotta burnt orange backdrop */
-            cream: '#FAF6EE',         /* Warm ivory card fill */
-            creamDark: '#EFE9DD',     /* Secondary container fill */
-            ink: '#231F20',           /* Deep slate/charcoal text & borders */
-            rust: '#C43D1A',          /* Punchy terracotta accent */
-            rustDark: '#992B0E',
-            sage: '#44624A',          /* Muted green container tone from Slide 07 */
+            darkbg: '#09090b',
+            cardbg: '#121216',
+            cardborder: '#27272a',
+            accent: '#f59e0b', /* Amber */
           },
           boxShadow: {
-            'deck': '8px 8px 0px #231F20',
-            'deck-sm': '4px 4px 0px #231F20',
-            'deck-lg': '12px 12px 0px #231F20',
+            'glow': '0 0 40px -10px rgba(245, 158, 11, 0.15)',
           }
         }
       }
@@ -45,731 +40,390 @@
   </script>
 
   <style>
-    /* Prevent horizontal overflow on mobile */
-    html, body {
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-    
     body {
-      background-color: #C94B28;
-      color: #231F20;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      background-color: #09090b;
+      color: #f4f4f5;
     }
-
-    /* Ensure long words and headings wrap cleanly on small screens */
-    h1, h2, h3, p {
-      overflow-wrap: break-word;
-      word-break: break-word;
+    .glass-nav {
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(12px);
     }
-
-    .vertical-tag {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
+    .project-card {
+      background: linear-gradient(145deg, #121216 0%, #18181b 100%);
+      border: 1px solid #27272a;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-
-    .editorial-card {
-      background-color: #FAF6EE;
-      border: 2px solid #231F20;
-      border-radius: 20px;
-      box-shadow: 6px 6px 0px #231F20;
-    }
-
-    @media (min-width: 640px) {
-      .editorial-card {
-        border-radius: 28px;
-        box-shadow: 8px 8px 0px #231F20;
-      }
-    }
-
-    .editorial-border {
-      border: 2px solid #231F20;
-    }
-
-    .editorial-pill {
-      border: 1.5px solid #231F20;
-      box-shadow: 2px 2px 0px #231F20;
+    .project-card:hover {
+      border-color: #f59e0b;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(245, 158, 11, 0.15);
     }
   </style>
 </head>
-<body class="selection:bg-rust selection:text-white antialiased min-h-screen pt-24 pb-12 px-3 sm:px-6 md:px-10">
+<body class="antialiased selection:bg-amber-500 selection:text-black">
 
-  <!-- HEADER / TOP NAVIGATION -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-[#FAF6EE]/95 backdrop-blur-md border-b-2 border-[#231F20]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-      <a href="#" class="font-headline font-black text-base sm:text-lg tracking-wider text-ink flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-rust ring-4 ring-rust/20 shrink-0"></span>
-        <span class="truncate">UJJWAL KASHYAP</span>
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-zinc-800/80">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-display font-black text-lg tracking-wider text-white flex items-center gap-2.5">
+        <span class="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></span>
+        <span>UJJWAL KASHYAP</span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-ink/70">
-        <a href="#philosophy" class="hover:text-rust transition">Philosophy</a>
-        <a href="#work" class="hover:text-rust transition">Brand Work</a>
-        <a href="#spotlight" class="hover:text-rust transition">Featured</a>
-        <a href="#platforms" class="hover:text-rust transition">Platforms</a>
-        <a href="#monetization" class="hover:text-rust transition">Monetization</a>
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+        <a href="#about" class="hover:text-amber-400 transition">About</a>
+        <a href="#work" class="hover:text-amber-400 transition">Experience</a>
+        <a href="#platforms" class="hover:text-amber-400 transition">Platforms</a>
+        <a href="#spotlight" class="hover:text-amber-400 transition">Featured</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <a href="mailto:ujjwalkashyap432@gmail.com" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-rust hover:bg-rustDark text-white text-xs font-bold uppercase tracking-wider rounded-xl transition editorial-border shadow-deck-sm">
-          <i class="fa-regular fa-envelope text-xs"></i> <span class="hidden sm:inline">Get in Touch</span><span class="inline sm:hidden">Contact</span>
+      <div>
+        <a href="mailto:ujjwalkashyap432@gmail.com" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black text-xs font-bold uppercase tracking-wider rounded-xl transition shadow-lg shadow-amber-500/20">
+          Let's Talk
         </a>
       </div>
     </div>
   </header>
 
-  <!-- MAIN DECK GRID CONTAINER -->
-  <main class="max-w-5xl mx-auto space-y-10 sm:space-y-12">
+  <!-- HERO SECTION -->
+  <section class="pt-36 pb-20 md:pt-44 md:pb-32 px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Available for Growth & Creative Roles</span>
+        </div>
 
-    <!-- ==================== CARD 01: HERO COVER ==================== -->
-    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <!-- Left Vertical Ribbon -->
-      <div class="absolute left-4 top-10 bottom-10 hidden sm:flex items-center justify-center">
-        <span class="vertical-tag font-display text-[10px] tracking-[0.25em] font-extrabold uppercase text-ink/40">
-          DESIGN • STORYTELLING • PERFORMANCE • MEDIA
-        </span>
+        <h1 class="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl tracking-tight text-white leading-[1.1]">
+          Visual Storyteller & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Growth Marketer.</span>
+        </h1>
+
+        <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-xl font-normal">
+          Bridging the gap between high-retention video production and performance ad funnels[cite: 2, 3]. MBA in Marketing & Supply Chain[cite: 3] building modern brand equity through authentic digital experiences.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#work" class="px-6 py-3.5 bg-zinc-100 hover:bg-white text-zinc-900 font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-lg">
+            Explore Archive
+          </a>
+          <a href="Ujjwal-Kumar-CV.pdf" download class="px-6 py-3.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition">
+            <i class="fa-solid fa-download mr-2"></i> Download CV
+          </a>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex items-center gap-4 pt-4 text-zinc-400">
+          <a href="https://youtube.com/@theujjwalkashyap" target="_blank" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.instagram.com/the_ujjwalkashyap" target="_blank" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/ujjwalkumar409" target="_blank" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://snapnear.in/" target="_blank" class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center hover:text-amber-400 hover:border-amber-500/50 transition"><i class="fa-solid fa-camera-retro"></i></a>
+        </div>
       </div>
 
-      <div class="sm:pl-8 lg:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-5 sm:space-y-6">
-          <div class="flex items-center justify-between">
-            <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-            <span class="font-display font-bold text-xs uppercase tracking-widest text-ink/65">PORTFOLIO 2026</span>
-          </div>
-
-          <h1 class="font-headline font-black text-4xl sm:text-6xl lg:text-[70px] leading-[1.05] tracking-tight text-rust uppercase break-words">
-            UJJWAL <br>
-            <span class="text-ink">KASHYAP</span>
-          </h1>
-
-          <div class="space-y-2 sm:space-y-3">
-            <p class="font-display font-bold text-lg sm:text-2xl text-ink">
-              Visual Storyteller & Growth Marketer
-            </p>
-            <p class="text-ink/80 text-sm sm:text-base leading-relaxed max-w-lg">
-              Translating authentic moments into high-retention video assets, scaled conversion ad funnels, and measurable brand growth[cite: 2, 3].
-            </p>
-          </div>
-
-          <!-- Social Handles -->
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <a href="https://youtube.com/@theujjwalkashyap" target="_blank" class="w-10 h-10 rounded-xl bg-white editorial-pill flex items-center justify-center text-ink hover:text-rust transition" title="YouTube">
-              <i class="fa-brands fa-youtube"></i>
-            </a>
-            <a href="https://www.instagram.com/the_ujjwalkashyap" target="_blank" class="w-10 h-10 rounded-xl bg-white editorial-pill flex items-center justify-center text-ink hover:text-rust transition" title="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/ujjwalkumar409" target="_blank" class="w-10 h-10 rounded-xl bg-white editorial-pill flex items-center justify-center text-ink hover:text-rust transition" title="LinkedIn">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-            <a href="https://snapnear.in/" target="_blank" class="w-10 h-10 rounded-xl bg-white editorial-pill flex items-center justify-center text-ink hover:text-rust transition" title="SnapNear">
-              <i class="fa-solid fa-camera-retro"></i>
-            </a>
-          </div>
-
-          <!-- Metrics Row -->
-          <div class="grid grid-cols-2 gap-4 pt-5 sm:pt-6 border-t-2 border-ink/10 max-w-md">
+      <!-- Hero Card / Portrait -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl bg-gradient-to-b from-zinc-800 to-zinc-950 p-2 border border-zinc-800 shadow-glow overflow-hidden group">
+          <img 
+            src="images/00-profile-portrait.jpg" 
+            alt="Ujjwal Kashyap" 
+            class="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 transition duration-500"
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';"
+          />
+          <div class="absolute inset-x-4 bottom-4 bg-zinc-950/80 backdrop-blur-md p-4 rounded-2xl border border-zinc-800/80 flex items-center justify-between">
             <div>
-              <div class="font-headline font-black text-2xl sm:text-3xl text-rust">+250k</div>
-              <p class="text-xs font-bold uppercase tracking-wider text-ink/70">Organic Reach[cite: 2]</p>
+              <div class="text-white font-bold text-sm">Ujjwal Kashyap</div>
+              <div class="text-xs text-amber-400 font-mono">Greater Noida / NCR[cite: 2, 3]</div>
             </div>
-            <div>
-              <div class="font-headline font-black text-2xl sm:text-3xl text-rust">+800k</div>
-              <p class="text-xs font-bold uppercase tracking-wider text-ink/70">Hours Watched</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Portrait Image Frame -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-rust rounded-3xl editorial-border overflow-hidden shadow-deck">
-            <img 
-              src="images/00-profile-portrait.jpg" 
-              alt="Ujjwal Kashyap" 
-              class="w-full h-full object-cover"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';"
-            />
+            <span class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs"><i class="fa-solid fa-arrow-up-right"></i></span>
           </div>
         </div>
       </div>
 
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        01
+    </div>
+  </section>
+
+  <!-- METRICS / STATS BAR -->
+  <section class="border-y border-zinc-800 bg-zinc-950/50 py-12 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="font-display font-black text-3xl sm:text-4xl text-white">+250k</div>
+        <div class="text-xs font-mono uppercase tracking-wider text-zinc-500 mt-1">Organic Audience Reached[cite: 2]</div>
       </div>
-    </section>
+      <div>
+        <div class="font-display font-black text-3xl sm:text-4xl text-amber-500">+800k</div>
+        <div class="text-xs font-mono uppercase tracking-wider text-zinc-500 mt-1">Hours Watched</div>
+      </div>
+      <div>
+        <div class="font-display font-black text-3xl sm:text-4xl text-white">100+</div>
+        <div class="text-xs font-mono uppercase tracking-wider text-zinc-500 mt-1">Commercial Shoots</div>
+      </div>
+      <div>
+        <div class="font-display font-black text-3xl sm:text-4xl text-amber-500">TD-1240</div>
+        <div class="text-xs font-mono uppercase tracking-wider text-zinc-500 mt-1">Performance Certified[cite: 1]</div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ABOUT / PHILOSOPHY -->
+  <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
+    <div class="space-y-4 mb-16">
+      <span class="text-xs font-mono uppercase tracking-widest text-amber-500 font-bold">The Core Thesis</span>
+      <h2 class="font-display font-bold text-3xl sm:text-5xl text-white">Authentic video out-converts corporate ads.</h2>
+    </div>
 
-    <!-- ==================== CARD 02: ABOUT ME ==================== -->
-    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="absolute left-4 top-10 bottom-10 hidden sm:flex items-center justify-center">
-        <span class="vertical-tag font-display text-[10px] tracking-[0.25em] font-extrabold uppercase text-ink/40">
-          BIOGRAPHY • EDUCATION • CREDENTIALS
-        </span>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <div class="lg:col-span-7 project-card p-8 sm:p-10 rounded-3xl space-y-6 flex flex-col justify-between">
+        <div class="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+          <p>
+            My journey with the lens started early—<strong>framing and shooting when I was in the 7th standard</strong>. What began as a creative outlet evolved into a rigorous pursuit of commercial marketing strategy.
+          </p>
+          <p>
+            After completing my <strong>MBA in Marketing & Supply Chain</strong>[cite: 3], I combined field production with performance marketing infrastructure on Meta and Google networks, ensuring every visual asset is tied directly to ROI and lower Customer Acquisition Cost (CAC)[cite: 1, 3].
+          </p>
+        </div>
+        <div class="pt-6 border-t border-zinc-800 flex items-center justify-between text-xs font-mono text-zinc-400">
+          <span>Tutedude Performance Certified</span>
+          <span class="text-amber-400 font-bold">ID: TD-UJJW-PM-1240[cite: 1]</span>
+        </div>
       </div>
 
-      <div class="sm:pl-8 lg:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-5 sm:space-y-6">
-          <div class="flex items-center justify-between">
-            <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-            <span class="font-mono text-xs text-ink/65 uppercase">PROFILE BRIEF</span>
+      <div class="lg:col-span-5 bg-gradient-to-br from-amber-500/10 to-transparent p-8 sm:p-10 rounded-3xl border border-amber-500/20 flex flex-col justify-between">
+        <div class="space-y-4">
+          <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">Strategic Edge</span>
+          <h3 class="font-display font-bold text-2xl text-white">Conversion-First Production</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Polished studio commercials build brand awareness, but <strong>authentic user testimonials and hook-based storytelling solve friction and drive immediate conversions.</strong>
+          </p>
+        </div>
+        <ul class="space-y-3 text-xs font-mono text-zinc-300 pt-6">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> High-retention hook editing</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Data-backed A/B ad variations[cite: 1, 3]</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Seamless mobile user journeys</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK / ARCHIVE -->
+  <section id="work" class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-800/80">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-amber-500 font-bold">Professional Engagements</span>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-1">Brand Work & Case Studies</h2>
+      </div>
+      <p class="text-zinc-400 text-sm max-w-sm mt-4 md:mt-0">
+        Click any client project to inspect on-ground deliverables, production stills, and campaign metrics.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Euler Motors -->
+      <div onclick="openWorkModal('euler')" class="project-card p-8 rounded-3xl cursor-pointer flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <span class="px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full text-xs font-mono font-semibold border border-amber-500/20">Euler Motors[cite: 3]</span>
+            <span class="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:bg-amber-500 group-hover:text-black transition"><i class="fa-solid fa-arrow-right text-xs"></i></span>
           </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Commercial EV Shoots</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Operated on-ground video production across charging hubs and driver depots, producing conversion ad creatives[cite: 2, 3].
+          </p>
+        </div>
+        <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-500">
+          <span>New Delhi, NCR[cite: 3]</span>
+          <span class="text-amber-400 font-bold group-hover:underline">View Stills →</span>
+        </div>
+      </div>
 
-          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
-            ABOUT ME
+      <!-- IG International -->
+      <div onclick="openWorkModal('ig')" class="project-card p-8 rounded-3xl cursor-pointer flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs font-mono font-semibold border border-emerald-500/20">IG International[cite: 2]</span>
+            <span class="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:bg-amber-500 group-hover:text-black transition"><i class="fa-solid fa-arrow-right text-xs"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Exotic Fruit Supply Chain</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Produced 50+ reels and 100+ static creatives documenting international cold-chain sourcing and distribution[cite: 2].
+          </p>
+        </div>
+        <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-500">
+          <span>Pan-India Distribution</span>
+          <span class="text-amber-400 font-bold group-hover:underline">View Campaign →</span>
+        </div>
+      </div>
+
+      <!-- Amazg -->
+      <div onclick="openWorkModal('amazg')" class="project-card p-8 rounded-3xl cursor-pointer flex flex-col justify-between group">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <span class="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-xs font-mono font-semibold border border-purple-500/20">Amazg[cite: 3]</span>
+            <span class="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:bg-amber-500 group-hover:text-black transition"><i class="fa-solid fa-arrow-right text-xs"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">Performance Creatives</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Designed multi-format static and video ad sets engineered specifically for conversion marketing across Meta platforms[cite: 3].
+          </p>
+        </div>
+        <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-500">
+          <span>Bengaluru[cite: 3]</span>
+          <span class="text-amber-400 font-bold group-hover:underline">View Assets →</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SELF-BUILT PLATFORMS -->
+  <section id="platforms" class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-800/80">
+    <div class="space-y-4 mb-16">
+      <span class="text-xs font-mono uppercase tracking-widest text-amber-500 font-bold">Entrepreneurial Execution</span>
+      <h2 class="font-display font-bold text-3xl sm:text-5xl text-white">Platforms I Coded & Marketed</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- SnapNear -->
+      <div class="project-card p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-zinc-500 uppercase">Hyper-Local Discovery</span>
+            <a href="https://snapnear.in/" target="_blank" class="text-xs font-bold text-amber-400 hover:underline">snapnear.in <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+          </div>
+          <div class="h-48 rounded-2xl overflow-hidden mb-6 bg-zinc-900 border border-zinc-800">
+            <img src="images/16-product-snapnear.jpg" alt="SnapNear" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=SnapNear.in';">
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-2">SnapNear: 5km Photographer Discovery</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Founded to connect clients directly with verified local photographers within a 5 km radius, removing middlemen markups for portrait and event bookings.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comve -->
+      <div class="project-card p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-zinc-500 uppercase">E-Commerce Architecture</span>
+            <a href="https://comve.in" target="_blank" class="text-xs font-bold text-amber-400 hover:underline">comve.in <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+          </div>
+          <div class="h-48 rounded-2xl overflow-hidden mb-6 bg-zinc-900 border border-zinc-800">
+            <img src="images/15-product-comve.jpg" alt="Comve" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Comve.in';">
+          </div>
+          <h3 class="font-display font-bold text-2xl text-white mb-2">Comve.in: Built from Scratch</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Coded a lightweight single-product store with custom HTML/CSS/JS for fast mobile loading, integrated Razorpay payments, and instant WhatsApp order dispatch webhooks.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AB DE VILLIERS SPOTLIGHT -->
+  <section id="spotlight" class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-800/80">
+    <div class="project-card p-8 lg:p-12 rounded-3xl relative overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider border border-amber-500/20">
+            <i class="fa-solid fa-star"></i> Organic High-Water Mark
+          </div>
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-white">
+            Featured on AB de Villiers' Official Story
           </h2>
-
-          <p class="text-ink text-sm sm:text-base leading-relaxed">
-            Holding an <strong>MBA in Marketing & Supply Chain</strong> along with a foundational degree in Business Management, I bridge the gap between creative camera execution and commercial growth funnels[cite: 3].
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            When cricket icon AB de Villiers shared my video piece directly on his official Instagram story, it proved that sound design, dynamic pacing, and authentic storytelling break through globally with zero ad spend.
           </p>
-
-          <p class="text-ink/80 text-sm leading-relaxed">
-            I specialize in commercial video shoots, Meta performance ad testing, and building organic distribution loops that consistently outperform traditional corporate commercials.
-          </p>
-
-          <div class="bg-creamDark p-4 sm:p-6 rounded-2xl editorial-border space-y-3">
-            <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Commercial Filmmaking & Video Production[cite: 3]
-            </div>
-            <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Performance Marketing & Meta Ad Funnels[cite: 3]
-            </div>
-            <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Hyperlocal Digital Product Architectures
-            </div>
-            <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-ink">
-              <span class="w-2.5 h-2.5 bg-rust rounded-full shrink-0"></span> Certified Performance Marketer (TD-UJJW-PM-1240)[cite: 1]
-            </div>
-          </div>
-
-          <div class="pt-2">
-            <a href="Ujjwal-Kumar-CV.pdf" download class="inline-flex items-center gap-2 px-6 py-2.5 bg-ink text-cream rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rust transition editorial-border shadow-deck-sm">
-              <i class="fa-solid fa-file-arrow-down"></i> Download Resume / CV
-            </a>
+          <div class="flex items-center gap-6 text-xs font-mono text-zinc-500 pt-2">
+            <div><strong class="text-zinc-300 block font-sans">Verification File</strong> 04-ab-devilliers-proof.jpg[cite: 6]</div>
+            <div><strong class="text-zinc-300 block font-sans">Reach</strong> Global Organic Distribution</div>
           </div>
         </div>
 
         <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-xs sm:max-w-sm aspect-[4/5] bg-creamDark rounded-3xl editorial-border overflow-hidden shadow-deck">
-            <img 
-              src="images/01-about-portrait.jpg" 
-              alt="Ujjwal Kashyap Profile" 
-              class="w-full h-full object-cover"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80';"
-            />
+          <div class="w-full max-w-xs rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950 p-2 shadow-2xl">
+            <img src="images/04-ab-devilliers-proof.jpg" alt="AB de Villiers Proof" class="w-full rounded-xl object-contain max-h-[340px]" onerror="this.onerror=null; this.src='https://placehold.co/600x800?text=AB+de+Villiers+Story';">
           </div>
         </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        02
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 03: DESIGN PHILOSOPHY ==================== -->
-    <section id="philosophy" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="absolute left-4 top-10 bottom-10 hidden sm:flex items-center justify-center">
-        <span class="vertical-tag font-display text-[10px] tracking-[0.25em] font-extrabold uppercase text-ink/40">
-          THESIS • PRINCIPLES • STRATEGY
-        </span>
-      </div>
-
-      <div class="sm:pl-8 lg:pl-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-6 space-y-5 sm:space-y-6">
-          <div class="flex items-center justify-between">
-            <span class="font-headline font-black text-2xl text-rust">03</span>
-            <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          </div>
-
-          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase leading-tight">
-            MY DESIGN <br><span class="text-ink">PHILOSOPHY</span>
-          </h2>
-
-          <p class="text-ink text-sm sm:text-base leading-relaxed">
-            I began shooting through lenses in 7th grade. That hands-on intuition taught me what data later confirmed: <strong>real user experiences out-convert scripted commercials every single time.</strong>
-          </p>
-
-          <p class="text-ink/80 text-sm leading-relaxed">
-            While high-polish studio commercials create prestige, authentic short-form videos address buyer skepticism, hold audience watch-time, and convert into revenue.
-          </p>
-
-          <ul class="space-y-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-ink border-t-2 border-ink/10 pt-4">
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Audience-Centric Retention Loops</li>
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Raw Authenticity Over Corporate Clutter</li>
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Continuous A/B Hook Optimization</li>
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Direct Correlation to Business ROI</li>
-          </ul>
-        </div>
-
-        <div class="lg:col-span-6 flex justify-center">
-          <div class="w-full aspect-[4/3] rounded-3xl editorial-border overflow-hidden bg-creamDark shadow-deck">
-            <img 
-              src="images/02-philosophy-shoot.jpg" 
-              alt="Creative Editing Setup" 
-              class="w-full h-full object-cover"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80';"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        03
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 04: WORKFLOW & PROCESS ==================== -->
-    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-6">
-        <svg class="w-6 h-6 text-rust" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-        <span class="font-display font-bold text-xs uppercase tracking-widest text-ink/65">PORTFOLIO 2026</span>
-      </div>
-
-      <div class="space-y-4 mb-8">
-        <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
-          CREATIVE WORKFLOW <br><span class="text-ink">& DESIGN PROCESS</span>
-        </h2>
-        <p class="text-ink/80 text-sm max-w-xl">
-          From customer problem identification to final converted campaign, every production follows a systematic framework.
+  <!-- MONETIZATION & YOUTUBE ECOSYSTEM -->
+  <section class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-800/80">
+    <div class="project-card p-8 lg:p-12 rounded-3xl space-y-8">
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-amber-500 font-bold">Commercial Ecosystem</span>
+        <h2 class="font-display font-bold text-3xl text-white mt-1">Monetizing via YouTube & Amazon Affiliate Architecture</h2>
+        <p class="text-zinc-400 text-sm mt-2 max-w-3xl">
+          By producing practical gear reviews and filming setup breakdowns across my channels (<a href="https://youtube.com/@theujjwalkashyap" target="_blank" class="text-amber-400 underline">@theujjwalkashyap</a> and <a href="https://www.instagram.com/ujjwalkashyap433" target="_blank" class="text-amber-400 underline">@ujjwalkashyap433</a>), I route high-intent viewers directly into structured Amazon affiliate purchase paths.
         </p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 pt-4 border-t-2 border-ink/10">
-        <div class="bg-white p-4 rounded-2xl editorial-border space-y-2">
-          <div class="font-headline font-black text-2xl text-rust">01</div>
-          <div class="font-bold text-sm uppercase text-ink">Discover</div>
-          <p class="text-[11px] text-ink/70 leading-normal">Define business KPIs, target buyer persona & core friction.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+        <div class="bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800">
+          <div class="font-bold text-white mb-2">1. Authentic In-Use Reviews</div>
+          <p class="text-zinc-400 text-xs leading-relaxed">Focusing on practical field reliability of cameras, lenses, and lighting rather than reading spec sheets.</p>
         </div>
-
-        <div class="bg-white p-4 rounded-2xl editorial-border space-y-2">
-          <div class="font-headline font-black text-2xl text-rust">02</div>
-          <div class="font-bold text-sm uppercase text-ink">Research</div>
-          <p class="text-[11px] text-ink/70 leading-normal">Understand users, market behavior, and competitor trends.</p>
+        <div class="bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800">
+          <div class="font-bold text-white mb-2">2. Timed Affiliate Placement</div>
+          <p class="text-zinc-400 text-xs leading-relaxed">Organizing direct product links in descriptions and pinned comments matching video timestamps.</p>
         </div>
-
-        <div class="bg-white p-4 rounded-2xl editorial-border space-y-2">
-          <div class="font-headline font-black text-2xl text-rust">03</div>
-          <div class="font-bold text-sm uppercase text-ink">Design</div>
-          <p class="text-[11px] text-ink/70 leading-normal">Create clear visual concepts, hooks, and storyboards.</p>
-        </div>
-
-        <div class="bg-white p-4 rounded-2xl editorial-border space-y-2">
-          <div class="font-headline font-black text-2xl text-rust">04</div>
-          <div class="font-bold text-sm uppercase text-ink">Develop</div>
-          <p class="text-[11px] text-ink/70 leading-normal">Shoot on location, refine pacing, and finalize assets.</p>
-        </div>
-
-        <div class="bg-white p-4 rounded-2xl editorial-border space-y-2 col-span-2 md:col-span-1">
-          <div class="font-headline font-black text-2xl text-rust">05</div>
-          <div class="font-bold text-sm uppercase text-ink">Deliver</div>
-          <p class="text-[11px] text-ink/70 leading-normal">Launch ad campaigns with confidence and track ROI.</p>
+        <div class="bg-zinc-900/60 p-6 rounded-2xl border border-zinc-800">
+          <div class="font-bold text-white mb-2">3. Evergreen Referral Windows</div>
+          <p class="text-zinc-400 text-xs leading-relaxed">Capturing conversions on camera accessories and everyday studio gear within Amazon's attribution window.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        04
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 05: SKILLS & EXPERTISE ==================== -->
-    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
-            SKILLS & <span class="text-ink">EXPERTISE</span>
-          </h2>
-        </div>
-        <span class="font-headline font-black text-3xl text-ink/30">05</span>
+  <!-- FOOTER / CONTACT -->
+  <footer class="border-t border-zinc-800 bg-zinc-950 py-20 px-6 text-center">
+    <div class="max-w-3xl mx-auto space-y-6">
+      <span class="text-xs font-mono uppercase tracking-widest text-amber-500 font-bold">Ready for Impact</span>
+      <h2 class="font-display font-black text-4xl sm:text-5xl text-white">Let's build something extraordinary.</h2>
+      <p class="text-zinc-400 text-sm">Available for creative and growth marketing leadership roles.</p>
+      
+      <div class="flex flex-wrap justify-center items-center gap-4 pt-4 text-xs font-bold uppercase tracking-wider">
+        <a href="mailto:ujjwalkashyap432@gmail.com" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-black rounded-xl transition shadow-lg">ujjwalkashyap432@gmail.com</a>
+        <a href="https://wa.me/917004996170" target="_blank" class="px-6 py-3.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white rounded-xl transition">WhatsApp (+91 7004996170)[cite: 2]</a>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 mb-8">
-        <div class="bg-white p-4 rounded-2xl editorial-border text-center space-y-2">
-          <i class="fa-solid fa-bullseye text-2xl text-rust"></i>
-          <p class="font-bold text-xs uppercase tracking-wider text-ink">Positioning & planning</p>
-        </div>
-        <div class="bg-white p-4 rounded-2xl editorial-border text-center space-y-2">
-          <i class="fa-solid fa-laptop text-2xl text-rust"></i>
-          <p class="font-bold text-xs uppercase tracking-wider text-ink">Editorial & presentation</p>
-        </div>
-        <div class="bg-white p-4 rounded-2xl editorial-border text-center space-y-2">
-          <i class="fa-solid fa-lightbulb text-2xl text-rust"></i>
-          <p class="font-bold text-xs uppercase tracking-wider text-ink">Ideas & concepts</p>
-        </div>
-        <div class="bg-white p-4 rounded-2xl editorial-border text-center space-y-2">
-          <i class="fa-solid fa-heart text-2xl text-rust"></i>
-          <p class="font-bold text-xs uppercase tracking-wider text-ink">Content creation</p>
-        </div>
-        <div class="bg-white p-4 rounded-2xl editorial-border text-center space-y-2">
-          <i class="fa-solid fa-play text-2xl text-rust"></i>
-          <p class="font-bold text-xs uppercase tracking-wider text-ink">Simple animations</p>
-        </div>
-        <div class="bg-white p-4 rounded-2xl editorial-border text-center space-y-2">
-          <i class="fa-solid fa-layer-group text-2xl text-rust"></i>
-          <p class="font-bold text-xs uppercase tracking-wider text-ink">Visual hierarchy</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t-2 border-ink/10">
-        <div class="h-28 rounded-xl overflow-hidden editorial-border">
-          <img src="images/09-ig-work-1.jpg" alt="Work sample" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542744094-3a31243324d0?auto=format&fit=crop&w=400&q=80';">
-        </div>
-        <div class="h-28 rounded-xl overflow-hidden editorial-border">
-          <img src="images/10-ig-work-2.jpg" alt="Work sample" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80';">
-        </div>
-        <div class="h-28 rounded-xl overflow-hidden editorial-border">
-          <img src="images/11-ig-work-3.jpg" alt="Work sample" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=400&q=80';">
-        </div>
-        <div class="h-28 rounded-xl overflow-hidden editorial-border">
-          <img src="images/12-ig-work-4.jpg" alt="Work sample" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80';">
-        </div>
-      </div>
-
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        05
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 06: PROJECT BRANDING SHOWCASE ==================== -->
-    <section id="work" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
-            PROJECT BRANDING <span class="text-ink">SHOWCASE</span>
-          </h2>
-          <p class="text-ink/80 text-sm mt-1">Click any client project to inspect on-ground deliverables.</p>
-        </div>
-        <span class="font-headline font-black text-3xl text-ink/30">06</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        
-        <div onclick="openWorkModal('euler')" class="group cursor-pointer bg-white p-6 rounded-3xl editorial-border shadow-deck-sm hover:border-rust transition flex flex-col justify-between">
-          <div>
-            <div class="h-44 rounded-2xl overflow-hidden editorial-border mb-4 bg-creamDark">
-              <img src="images/05-work-euler-1.jpg" alt="Euler Motors" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=600&q=80';">
-            </div>
-            <span class="text-[11px] font-mono font-bold text-rust uppercase">Commercial EV OEM[cite: 3]</span>
-            <h3 class="font-headline font-bold text-2xl text-ink mt-1">Euler Motors[cite: 3]</h3>
-            <p class="text-ink/70 text-xs mt-2 leading-relaxed">Commercial vehicle shoots at charging hubs and driver testimonial reels[cite: 2, 3].</p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-ink/10 flex items-center justify-between text-xs font-bold text-rust">
-            <span>View Stills & Details</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </div>
-        </div>
-
-        <div onclick="openWorkModal('ig')" class="group cursor-pointer bg-white p-6 rounded-3xl editorial-border shadow-deck-sm hover:border-rust transition flex flex-col justify-between">
-          <div>
-            <div class="h-44 rounded-2xl overflow-hidden editorial-border mb-4 bg-creamDark">
-              <img src="images/09-ig-work-1.jpg" alt="IG International" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=600&q=80';">
-            </div>
-            <span class="text-[11px] font-mono font-bold text-rust uppercase">Supply Chain & Import[cite: 2]</span>
-            <h3 class="font-headline font-bold text-2xl text-ink mt-1">IG International[cite: 2]</h3>
-            <p class="text-ink/70 text-xs mt-2 leading-relaxed">50+ reels and 100+ static creatives documenting cold-chain logistics[cite: 2].</p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-ink/10 flex items-center justify-between text-xs font-bold text-rust">
-            <span>View Campaign Archive</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </div>
-        </div>
-
-        <div onclick="openWorkModal('amazg')" class="group cursor-pointer bg-white p-6 rounded-3xl editorial-border shadow-deck-sm hover:border-rust transition flex flex-col justify-between">
-          <div>
-            <div class="h-44 rounded-2xl overflow-hidden editorial-border mb-4 bg-creamDark">
-              <img src="images/13-ig-work-5.jpg" alt="Amazg Ad Creative" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80';">
-            </div>
-            <span class="text-[11px] font-mono font-bold text-rust uppercase">Performance Growth[cite: 3]</span>
-            <h3 class="font-headline font-bold text-2xl text-ink mt-1">Amazg Agency[cite: 3]</h3>
-            <p class="text-ink/70 text-xs mt-2 leading-relaxed">Scroll-stopping performance ad sets optimized for low acquisition cost[cite: 3].</p>
-          </div>
-          <div class="pt-4 mt-4 border-t border-ink/10 flex items-center justify-between text-xs font-bold text-rust">
-            <span>View Performance Assets</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="pt-6 border-t-2 border-ink/10 flex items-center gap-3 flex-wrap">
-        <span class="text-xs font-mono font-bold uppercase tracking-wider text-ink/65">Brand Swatches:</span>
-        <span class="w-6 h-6 rounded-full bg-[#C43D1A] editorial-border" title="#C43D1A"></span>
-        <span class="w-6 h-6 rounded-full bg-[#E57A44] editorial-border" title="#E57A44"></span>
-        <span class="w-6 h-6 rounded-full bg-[#FAF6EE] editorial-border" title="#FAF6EE"></span>
-        <span class="w-6 h-6 rounded-full bg-[#44624A] editorial-border" title="#44624A"></span>
-        <span class="w-6 h-6 rounded-full bg-[#231F20] editorial-border" title="#231F20"></span>
-      </div>
-
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        06
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 07: UX DESIGN PROJECT ==================== -->
-    <section id="platforms" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
-            UX DESIGN <span class="text-ink">PROJECT</span>
-          </h2>
-        </div>
-        <span class="font-headline font-black text-3xl text-ink/30">07</span>
-      </div>
-
-      <div class="bg-sage p-5 sm:p-10 rounded-3xl editorial-border grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-white">
-        
-        <div class="lg:col-span-6 space-y-4">
-          <span class="px-3 py-1 rounded-full bg-white text-sage font-mono text-xs font-bold uppercase tracking-wider">
-            Flagship Platform
-          </span>
-          <h3 class="font-headline font-black text-3xl sm:text-4xl">SnapNear.in</h3>
-          <p class="text-cream text-sm leading-relaxed">
-            Designed to connect clients directly with verified local photographers within a 5 km radius, removing middlemen markups and friction.
-          </p>
-
-          <ul class="space-y-2 text-xs font-mono text-cream/90 pt-2">
-            <li>✔ User Research & Persona Mapping</li>
-            <li>✔ Wireframing & Responsive UI Layout</li>
-            <li>✔ UI Prototyping & Direct WhatsApp Booking</li>
-          </ul>
-
-          <div class="pt-4">
-            <a href="https://snapnear.in/" target="_blank" class="inline-flex items-center gap-2 px-6 py-2.5 bg-cream text-ink font-bold text-xs uppercase tracking-wider rounded-full hover:bg-rust hover:text-white transition editorial-border shadow-deck-sm">
-              Visit SnapNear.in <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="lg:col-span-6 flex justify-center">
-          <div class="w-full max-w-sm aspect-[4/3] rounded-2xl editorial-border overflow-hidden bg-white shadow-deck">
-            <img src="images/16-product-snapnear.jpg" alt="SnapNear Platform" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=SnapNear.in+App';">
-          </div>
-        </div>
-
-      </div>
-
-      <div class="mt-6 p-5 sm:p-6 rounded-2xl bg-white editorial-border flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <span class="text-xs font-mono font-bold text-rust uppercase">E-Commerce Architecture</span>
-          <h4 class="font-headline font-bold text-xl text-ink">Comve.in — Single-Product Funnel</h4>
-          <p class="text-xs text-ink/70">Custom coded HTML/CSS/JS store paired with Razorpay checkout and WhatsApp dispatch.</p>
-        </div>
-        <a href="https://comve.in" target="_blank" class="px-5 py-2 rounded-full bg-creamDark text-xs font-bold text-ink uppercase tracking-wider editorial-border hover:bg-rust hover:text-white transition whitespace-nowrap">
-          Open comve.in <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-        </a>
-      </div>
-
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        07
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 08: SOCIAL MEDIA CAMPAIGN ==================== -->
-    <section id="spotlight" class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
-            SOCIAL MEDIA <span class="text-ink">CAMPAIGN</span>
-          </h2>
-        </div>
-        <span class="font-headline font-black text-3xl text-ink/30">08</span>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8">
-        <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rust/10 text-rust font-bold text-xs uppercase tracking-wider">
-            <i class="fa-solid fa-star"></i> Featured on AB de Villiers' Official Story
-          </div>
-
-          <h3 class="font-headline font-bold text-2xl sm:text-3xl text-ink">
-            Global Recognition Through Pure Organic Distribution
-          </h3>
-
-          <p class="text-ink/80 text-sm leading-relaxed">
-            When cricket icon AB de Villiers shared my video piece directly on his official Instagram story, it proved that sound design, dynamic cuts, and authentic storytelling can break through globally with zero ad spend.
-          </p>
-
-          <ul class="space-y-2 text-xs font-bold uppercase tracking-wider text-ink pt-2">
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Brand Awareness & Viral Reach</li>
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Content Strategy & Pacing Optimization</li>
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Visual Consistency across Reels</li>
-            <li class="flex items-center gap-2"><span class="text-rust">―</span> Performance Tracking & Analytics</li>
-          </ul>
-        </div>
-
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-sm rounded-3xl editorial-border overflow-hidden bg-creamDark shadow-deck p-3">
-            <img src="images/04-ab-devilliers-proof.jpg" alt="AB de Villiers Verification" class="rounded-2xl w-full object-cover max-h-[340px]" onerror="this.onerror=null; this.src='https://placehold.co/600x800?text=AB+de+Villiers+Story';">
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t-2 border-ink/10">
-        <div class="h-32 rounded-xl overflow-hidden editorial-border">
-          <img src="images/09-ig-work-1.jpg" alt="Campaign Asset" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80';">
-        </div>
-        <div class="h-32 rounded-xl overflow-hidden editorial-border">
-          <img src="images/10-ig-work-2.jpg" alt="Campaign Asset" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=400&q=80';">
-        </div>
-        <div class="h-32 rounded-xl overflow-hidden editorial-border">
-          <img src="images/13-ig-work-5.jpg" alt="Campaign Asset" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=400&q=80';">
-        </div>
-        <div class="h-32 rounded-xl overflow-hidden editorial-border">
-          <img src="images/14-ig-work-6.jpg" alt="Campaign Asset" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=400&q=80';">
-        </div>
-      </div>
-
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        08
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 09: ACHIEVEMENT & EXPERIENCE ==================== -->
-    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <svg class="w-6 h-6 text-rust mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
-          <h2 class="font-headline font-black text-3xl sm:text-5xl text-rust uppercase">
-            ACHIEVEMENT <br><span class="text-ink">& EXPERIENCE</span>
-          </h2>
-        </div>
-        <span class="font-headline font-black text-3xl text-ink/30">09</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="space-y-4">
-          <p class="text-ink/80 text-sm leading-relaxed">
-            Rooted in rigorous business education and hands-on media production, my professional path combines creative storytelling with enterprise growth execution.
-          </p>
-
-          <ul class="space-y-3 text-xs sm:text-sm font-bold text-ink">
-            <li class="flex items-start gap-2.5">
-              <span class="text-rust text-base">✔</span> Completed 100+ creative projects across automotive, agriculture, and e-commerce sectors.
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-rust text-base">✔</span> Worked with diverse industries spanning electric vehicles, exotic imports, and digital agencies.
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-rust text-base">✔</span> Built scalable brand systems and performance ad funnels that lower acquisition costs.
-            </li>
-            <li class="flex items-start gap-2.5">
-              <span class="text-rust text-base">✔</span> Focused on lasting results, high viewer watch-time, and measurable ROI.
-            </li>
-          </ul>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div class="h-44 rounded-2xl overflow-hidden editorial-border bg-creamDark">
-            <img src="images/05-work-euler-1.jpg" alt="Experience" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80';">
-          </div>
-          <div class="h-44 rounded-2xl overflow-hidden editorial-border bg-creamDark">
-            <img src="images/06-work-euler-2.jpg" alt="Experience" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80';">
-          </div>
-        </div>
-      </div>
-
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        09
-      </div>
-    </section>
-
-
-    <!-- ==================== CARD 10: CONTACT NOW ==================== -->
-    <section class="editorial-card p-5 sm:p-8 lg:p-12 relative overflow-hidden">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <div class="lg:col-span-7 space-y-5 sm:space-y-6">
-          <span class="text-xs font-mono font-bold uppercase tracking-widest text-ink/65">Let's Work Together!</span>
-          
-          <h2 class="font-headline font-black text-4xl sm:text-7xl text-rust uppercase leading-none">
-            CONTACT <br><span class="text-ink">NOW</span>
-          </h2>
-
-          <p class="text-ink text-sm sm:text-base leading-relaxed max-w-lg">
-            Ready to direct high-retention video campaigns, build performance marketing assets, or discuss full-time creative leadership roles.
-          </p>
-
-          <div class="space-y-3 pt-2">
-            <a href="mailto:ujjwalkashyap432@gmail.com" class="flex items-center gap-3 text-sm font-bold text-ink hover:text-rust transition">
-              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border shrink-0"><i class="fa-regular fa-envelope text-xs"></i></span>
-              <span class="truncate">ujjwalkashyap432@gmail.com</span>
-            </a>
-
-            <a href="https://wa.me/917004996170" target="_blank" class="flex items-center gap-3 text-sm font-bold text-ink hover:text-rust transition">
-              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border shrink-0"><i class="fa-brands fa-whatsapp text-xs"></i></span>
-              <span>+91 7004996170 (WhatsApp)[cite: 2]</span>
-            </a>
-
-            <a href="https://snapnear.in/" target="_blank" class="flex items-center gap-3 text-sm font-bold text-ink hover:text-rust transition">
-              <span class="w-8 h-8 rounded-full bg-rust text-white flex items-center justify-center editorial-border shrink-0"><i class="fa-solid fa-globe text-xs"></i></span>
-              <span>www.snapnear.in • comve.in</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-xs sm:max-w-sm aspect-[4/5] rounded-3xl editorial-border overflow-hidden bg-creamDark shadow-deck">
-            <img 
-              src="images/00-profile-portrait.jpg" 
-              alt="Ujjwal Kashyap" 
-              class="w-full h-full object-cover"
-              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80';"
-            />
-          </div>
-        </div>
-
-      </div>
-
-      <div class="absolute bottom-3 right-6 sm:bottom-4 sm:right-8 font-headline font-black text-xl sm:text-2xl text-ink/40">
-        10
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="max-w-5xl mx-auto mt-12 text-center text-xs font-mono text-white/80 font-bold">
-    © 2026 Ujjwal Kashyap · All Rights Reserved
+      <div class="text-xs font-mono text-zinc-600 pt-12">© 2026 Ujjwal Kashyap. All rights reserved.</div>
+    </div>
   </footer>
 
-
-  <!-- ==================== MODAL LIGHTBOX ==================== -->
-  <div id="workModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-ink/80 backdrop-blur-sm" onclick="closeWorkModal(event)">
-    <div class="bg-cream rounded-3xl max-w-3xl w-full p-5 sm:p-8 editorial-border shadow-deck-lg relative max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+  <!-- MODAL LIGHTBOX -->
+  <div id="workModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md" onclick="closeWorkModal(event)">
+    <div class="bg-[#121216] border border-zinc-800 rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
       
-      <div class="flex items-start justify-between pb-4 border-b-2 border-ink/20 shrink-0">
+      <div class="flex items-start justify-between pb-4 border-b border-zinc-800 shrink-0">
         <div>
-          <h3 id="modalTitle" class="text-xl sm:text-2xl font-headline font-black text-rust uppercase">Company</h3>
-          <p id="modalIndustry" class="text-xs font-mono text-ink/70 font-bold"></p>
+          <h3 id="modalTitle" class="text-xl sm:text-2xl font-display font-bold text-white">Company</h3>
+          <p id="modalIndustry" class="text-xs font-mono text-amber-400 font-semibold"></p>
         </div>
-        <button onclick="hideModal()" class="w-9 h-9 rounded-full bg-white editorial-border hover:bg-rust hover:text-white transition flex items-center justify-center shrink-0">
-          <i class="fa-solid fa-xmark"></i>
+        <button onclick="hideModal()" class="w-9 h-9 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-sm"></i>
         </button>
       </div>
 
-      <div class="overflow-y-auto space-y-6 pt-4 pr-1">
-        <div class="bg-white p-4 sm:p-5 rounded-2xl editorial-border">
-          <div class="text-[11px] font-mono uppercase tracking-wider text-ink/50 font-bold mb-1">Company Overview</div>
-          <p id="modalCompanyAbout" class="text-xs sm:text-sm text-ink leading-relaxed"></p>
+      <div class="overflow-y-auto space-y-6 pt-6 pr-2">
+        <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800/80">
+          <div class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 font-bold mb-1">Company Overview</div>
+          <p id="modalCompanyAbout" class="text-xs sm:text-sm text-zinc-300 leading-relaxed"></p>
           
-          <div class="text-[11px] font-mono uppercase tracking-wider text-rust font-bold mt-4 mb-1">Execution & Impact</div>
-          <p id="modalMyRole" class="text-xs sm:text-sm text-ink leading-relaxed"></p>
+          <div class="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold mt-4 mb-1">Execution & Impact</div>
+          <p id="modalMyRole" class="text-xs sm:text-sm text-zinc-300 leading-relaxed"></p>
         </div>
 
         <div>
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono uppercase tracking-wider text-ink font-bold">Field Deliverables</span>
-            <span id="modalImageCount" class="text-xs font-mono text-rust font-bold"></span>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono uppercase tracking-wider text-zinc-400 font-bold">Field Deliverables</span>
+            <span id="modalImageCount" class="text-xs font-mono text-amber-400 font-bold"></span>
           </div>
           <div id="modalImagesContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <!-- Modal items injected via JS -->
@@ -779,14 +433,13 @@
     </div>
   </div>
 
-
   <!-- JAVASCRIPT LOGIC -->
   <script>
     const workData = {
       euler: {
         title: "Euler Motors",
         industry: "Commercial Electric Vehicles · New Delhi[cite: 3]",
-        companyAbout: "Euler Motors is an Indian OEM building high-load electric commercial vehicles designed to optimize intra-city transport and last-mile delivery operations.",
+        companyAbout: "Euler Motors is an Indian OEM building high-load, high-torque electric commercial vehicles designed to optimize intra-city transport and last-mile delivery operations.",
         myRole: "Led on-ground commercial video production at charging hubs and driver depots[cite: 2, 3]. Filmed, edited, and formatted high-retention reel creatives, assisted on Meta conversion ads, managed WhatsApp lead flows, and addressed Google Maps customer reviews[cite: 3].",
         images: [
           { src: "images/05-work-euler-1.jpg", caption: "Sequence 05: Field commercial camera shoot[cite: 3, 6]" },
@@ -804,7 +457,7 @@
           { src: "images/09-ig-work-1.jpg", caption: "Sequence 09: Farm-level fruit sourcing documentation[cite: 2]" },
           { src: "images/10-ig-work-2.jpg", caption: "Sequence 10: Cold-chain warehouse & packaging facility[cite: 2]" },
           { src: "images/11-ig-work-3.jpg", caption: "Sequence 11: High-detail cinematic fruit macro shot" },
-          { src: "images/12-ig-work-4.jpg", caption: "Sequence 12: Content calendar & scheduling[cite: 2]" },
+          { src: "images/12-ig-work-4.jpg", caption: "Sequence 12: Content calendar & Hootsuite scheduling[cite: 2]" },
           { src: "images/13-ig-work-5.jpg", caption: "Sequence 13: Paid Meta conversion ad creative[cite: 2]" },
           { src: "images/14-ig-work-6.jpg", caption: "Sequence 14: Retail counter customer experience reel[cite: 2]" }
         ]
@@ -815,7 +468,7 @@
         companyAbout: "Amazg is a digital performance marketing firm focused on conversion-driven customer acquisition across Meta and Google networks.",
         myRole: "Designed high-CTR scroll-stopping static, story, and video creatives tailored to performance marketing goals[cite: 3]. Shot on-location visuals and adapted assets across multiple aspect ratios to improve conversion rates and lower acquisition costs[cite: 3].",
         images: [
-          { src: "images/13-ig-work-5.jpg", caption: "Sequence 03: Multi-format paid ad variation[cite: 3]" }
+          { src: "images/03-logo-amazg.png", caption: "Sequence 03: Multi-format paid ad variation[cite: 3]" }
         ]
       }
     };
@@ -833,10 +486,10 @@
       const container = document.getElementById('modalImagesContainer');
       container.innerHTML = data.images.map(img => `
         <div class="flex flex-col gap-2">
-          <div class="h-44 bg-creamDark rounded-2xl overflow-hidden editorial-border flex items-center justify-center">
+          <div class="h-48 bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-800 flex items-center justify-center">
             <img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=${encodeURIComponent(img.caption)}';">
           </div>
-          <span class="text-[11px] font-mono text-ink/70 leading-tight font-bold">${img.caption}</span>
+          <span class="text-[11px] font-mono text-zinc-400 leading-tight">${img.caption}</span>
         </div>
       `).join('');
 
