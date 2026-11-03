@@ -271,19 +271,19 @@
         </div>
       </div>
 
-      <!-- Amazg -->
+      <!-- Amazg (Updated to iPhone Accessories E-Commerce Company) -->
       <div onclick="openWorkModal('amazg')" class="project-card p-8 rounded-3xl cursor-pointer flex flex-col justify-between group">
         <div>
           <div class="flex items-center justify-between mb-6">
             <div class="h-10 px-3.5 bg-white border border-amber-500 rounded-xl flex items-center gap-2 shadow-md">
               <img src="images/03-logo-amazg.png" alt="Amazg" class="h-6 w-6 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/40x400?text=Amazg';">
-              <span class="text-xs font-extrabold text-orange-600 tracking-tight">Amazg Agency</span>
+              <span class="text-xs font-extrabold text-orange-600 tracking-tight">Amazg Accessories</span>
             </div>
             <span class="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:bg-amber-500 group-hover:text-black transition"><i class="fa-solid fa-arrow-right text-xs"></i></span>
           </div>
-          <h3 class="font-display font-bold text-2xl text-white mb-3">Performance Creatives</h3>
+          <h3 class="font-display font-bold text-2xl text-white mb-3">iPhone Accessories E-Commerce</h3>
           <p class="text-zinc-400 text-sm leading-relaxed">
-            Designed multi-format static and video ad sets engineered specifically for conversion marketing across Meta platforms.
+            Direct-to-consumer e-commerce brand specializing in premium iPhone accessories, backed by performance marketing and product unboxing videos.
           </p>
         </div>
         <div class="pt-6 mt-6 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-500">
@@ -295,7 +295,7 @@
     </div>
   </section>
 
-  <!-- VIDEO PRODUCTION VAULT (15 VIDEOS) -->
+  <!-- VIDEO PRODUCTION VAULT (13 VIDEOS WITH AUDIO & NO OVERLAY TEXT) -->
   <section id="videovault" class="py-24 px-6 max-w-6xl mx-auto border-t border-zinc-800/80">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
       <div>
@@ -303,7 +303,7 @@
         <h2 class="font-display font-bold text-3xl sm:text-5xl text-white mt-1">Video Production Vault</h2>
       </div>
       <p class="text-zinc-400 text-sm max-w-sm mt-4 md:mt-0">
-        Hover or tap any reel below to preview on-ground commercial shoots and ad creatives.
+        Playable reels from your `videos/` folder with full audio support.
       </p>
     </div>
 
@@ -455,30 +455,41 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Generate 15 video cards matching your exact filenames: videos/video-01 (1).mp4 ... videos/video-01 (15).mp4
+    // Array of your exact 13 compressed video filenames from your folder
+    const videoFiles = [
+      "video-01 (1).mp4",
+      "video-01 (2).mp4",
+      "video-01 (3).mp4",
+      "video-01 (4).mp4",
+      "video-01 (5).mp4",
+      "video-01 (6).mp4",
+      "video-01 (7).mp4",
+      "video-01 (8).mp4",
+      "video-01 (9).mp4",
+      "video-01 (10).mp4",
+      "video-01 (11).mp4",
+      "video-01 (12).mp4",
+      "video-01 (13).mp4",
+      "video-01 (14).mp4",
+      "video-01 (15).mp4"
+    ];
+
     const videoVaultGrid = document.getElementById('videoVaultGrid');
-    for (let i = 1; i <= 15; i++) {
-      const numStr = i < 10 ? '0' + i : i;
-      const fileName = `video-01 (${i}).mp4`;
+    videoFiles.forEach((fileName, index) => {
+      const assetNum = index + 1 < 10 ? '0' + (index + 1) : index + 1;
       const card = document.createElement('div');
       card.className = 'project-card rounded-2xl overflow-hidden flex flex-col justify-between p-4';
       card.innerHTML = `
-        <div class="aspect-[9/16] bg-zinc-900 rounded-xl overflow-hidden relative mb-3 border border-zinc-800 flex items-center justify-center group">
-          <video src="videos/${fileName}" class="w-full h-full object-cover" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;" onclick="this.paused ? this.play() : this.pause()"></video>
-          <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:opacity-0 transition pointer-events-none">
-            <span class="w-10 h-10 rounded-full bg-amber-500/90 text-black flex items-center justify-center shadow-lg"><i class="fa-solid fa-play text-xs ml-0.5"></i></span>
-          </div>
-          <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur text-[10px] font-mono text-amber-400">
-            ${fileName}
-          </div>
+        <div class="aspect-[9/16] bg-zinc-900 rounded-xl overflow-hidden relative mb-3 border border-zinc-800 flex items-center justify-center">
+          <video src="videos/${fileName}" class="w-full h-full object-cover" controls playsinline preload="metadata"></video>
         </div>
         <div class="flex items-center justify-between text-xs font-mono text-zinc-400">
-          <span>Asset #${numStr}</span>
+          <span>Asset #${assetNum}</span>
           <span class="text-amber-400">Vault Item</span>
         </div>
       `;
       videoVaultGrid.appendChild(card);
-    }
+    });
 
     const workData = {
       euler: {
@@ -508,12 +519,12 @@
         ]
       },
       amazg: {
-        title: "Amazg",
-        industry: "Performance Marketing · Bengaluru",
-        companyAbout: "Amazg is a digital performance marketing firm focused on conversion-driven customer acquisition across Meta and Google networks.",
-        myRole: "Designed high-CTR scroll-stopping static, story, and video creatives tailored to performance marketing goals. Shot on-location visuals and adapted assets across multiple aspect ratios to improve conversion rates and lower acquisition costs.",
+        title: "Amazg Accessories",
+        industry: "iPhone Accessories E-Commerce · Bengaluru",
+        companyAbout: "Amazg is a direct-to-consumer e-commerce brand specializing in premium iPhone accessories, combining high-end product unboxing with conversion-focused ad creation.",
+        myRole: "Produced product showcase reels, unboxing videos, and performance ad assets tailored for social commerce channels to drive customer acquisition and sales.",
         images: [
-          { src: "images/03-logo-amazg.png", caption: "Sequence 03: Multi-format paid ad variation" }
+          { src: "images/03-logo-amazg.png", caption: "Sequence 03: Product showcase & unboxing creative" }
         ]
       }
     };
